@@ -1,0 +1,98 @@
+// src/services/sheets.js
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+const { JWT } = require('google-auth-library');
+const logger = require('../utils/logger');
+
+class SheetsService {
+  constructor() {
+    this.spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
+    this.sheetName = process.env.GOOGLE_SHEET_NAME || 'DATOS';
+    this.isConfigured = false;
+
+    // Solo configurar si las credenciales existen
+    if (process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+      try {
+        this.auth = new JWT({
+          email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+          key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+          scopes: ['https://www.googleapis.com/auth/spreadsheets']
+        });
+        this.isConfigured = true;
+        logger.info('✅ Google Sheets configurado');
+      } catch (error) {
+        logger.warn('⚠️ Error configurando Google Sheets:', error.message);
+      }
+    } else {
+      logger.warn('⚠️ Google Sheets NO configurado - Las credenciales están vacías');
+    }
+  }
+
+  async appendLead(lead) {
+    try {
+      if (!this.isConfigured) {
+        logger.warn('⚠️ Google Sheets no configurado - Saltando guardado');
+        return false;
+      }
+
+      const doc = new GoogleSpreadsheet(this.spreadsheetId, this.auth);
+      await doc.loadInfo();
+
+      const sheet = doc.sheetsByTitle[this.sheetName];
+
+      await sheet.addRow({
+        'CONTACTO': lead.contacto,
+        'CIUDAD': lead.ciudad,
+        'PRODUCTO': lead.producto,
+        'COMO SUPO DE NOSOTROS': lead.fuente,
+        'ATIENDE': lead.asesor,
+        'STATUS': lead.status,
+        'TIPO DE PROYECTO': ''
+      });
+
+      logger.info('✅ Lead added to Google Sheets');
+      return true;
+    } catch (error) {
+      logger.error('Error adding to Google Sheets:', error);
+      return false;
+    }
+  }
+
+  async getAllLeads() {
+    try {
+      if (!this.isConfigured) {
+        logger.warn('⚠️ Google Sheets no configurado');
+        return [];
+      }
+
+      const doc = new GoogleSpreadsheet(this.spreadsheetId, this.auth);
+      await doc.loadInfo();
+
+      const sheet = doc.sheetsByTitle[this.sheetName];
+      const rows = await sheet.getRows();
+
+      const leads = rows.map(row => ({
+        contacto: row.get('CONTACTO'),
+        ciudad: row.get('CIUDAD'),
+        producto: row.get('PRODUCTO'),
+        fuente: row.get('COMO SUPO DE NOSOTROS'),
+        asesor: row.get('ATIENDE'),
+        status: row.get('STATUS')
+      }));
+
+      logger.info(`📊 ${leads.length} leads encontrados en Google Sheets`);
+      return leads;
+    } catch (error) {
+      logger.error('Error reading from Google Sheets:', error);
+      return [];
+    }
+  }
+
+  async getLeadsByPhone(telefono) {
+    const allLeads = await this.getAllLeads();
+    return allLeads.filter(lead =>
+      lead.contacto && lead.contacto.includes(telefono)
+    );
+  }
+}
+
+module.exports = new SheetsService();
