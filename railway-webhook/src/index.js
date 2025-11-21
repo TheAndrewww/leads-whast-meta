@@ -16,6 +16,9 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Servir archivos estáticos (política de privacidad, etc.)
+app.use(express.static('public'));
+
 // Routes
 app.use('/webhook', webhookRouter);
 app.use('/api', apiRouter);
