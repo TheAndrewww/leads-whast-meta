@@ -1,0 +1,22 @@
+{
+  "name": "leads-whatsapp-local",
+  "version": "1.0.0",
+  "description": "Cliente local de WhatsApp para enviar mensajes de leads",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "puppeteer": "^21.11.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "keywords": [
+    "whatsapp",
+    "whatsapp-web",
+    "automation"
+  ],
+  "license": "ISC"
+}

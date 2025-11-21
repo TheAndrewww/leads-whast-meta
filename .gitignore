@@ -1,8 +1,9 @@
-# Dependencies
+# Node modules
 node_modules/
 
 # Environment variables
 .env
+*.env.local
 
 # Logs
 logs/
@@ -11,22 +12,28 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Data files
+# Database
 data/
+*.db
+*.sqlite
 
 # Google credentials (NEVER commit these)
 *-credentials.json
 *serviceaccount*.json
 leads-automatizacion-*.json
-
-# Temporary files
-Tengo
+*.json
+!package.json
+!package-lock.json
+!railway-webhook/package.json
+!railway-webhook/package-lock.json
+!whatsapp-local/package.json
+!whatsapp-local/package-lock.json
 
 # WhatsApp Web Auth
 .wwebjs_auth/
 .wwebjs_cache/
 
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 
@@ -43,3 +50,9 @@ build/
 # Testing
 coverage/
 .nyc_output/
+
+# Old version backup
+OLD_VERSION/
+
+# PM2
+.pm2/

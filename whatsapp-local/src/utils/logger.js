@@ -37,8 +37,8 @@ class Logger {
 
   error(message, error) {
     this.log('error', message, {
-      error: error.message,
-      stack: error.stack
+      error: error?.message || error,
+      stack: error?.stack
     });
   }
 

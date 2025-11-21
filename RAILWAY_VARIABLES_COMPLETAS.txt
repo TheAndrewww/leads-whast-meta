@@ -1,0 +1,107 @@
+# ========================================
+# VARIABLES DE ENTORNO PARA RAILWAY
+# ========================================
+# Copia EXACTAMENTE como están aquí (sin las líneas de #)
+# ========================================
+
+# ========================================
+# FACEBOOK
+# ========================================
+
+FACEBOOK_ACCESS_TOKEN
+EAAeIDW40f8QBPyrT4pZAw8ZBd8s1eO7uxrj92KcLRwBYKGQw6eYBPj202KHiVv7o09xYkcSt7UaQHkCkdANtqGvB5TjqZB56QHZBBhaMwmzZARTo8ySBk4Nm96NZAqWUG9LZC55BzZBZCqAMUVpOOUtbTKoDElCzeTSsfxTRTNULo4jVkfaNZCHAFNL44TT5kFBnMMI4lUZCSa0bBk3ZCYNZC5ZCYTQJZAlCQYjC4vc5pRQPg9uPr0ZD
+
+FACEBOOK_VERIFY_TOKEN
+mitoken123
+
+# ========================================
+# WHATSAPP (solo IDs de grupos)
+# ========================================
+
+WHATSAPP_GRUPO_VRJ
+5214626329312-1607543001@g.us
+
+WHATSAPP_GRUPO_DLAB
+5214626329312-1610481856@g.us
+
+# ========================================
+# GOOGLE SHEETS
+# ========================================
+
+GOOGLE_SPREADSHEET_ID
+1AA4KXK8wQK6QI-3feptFPopN_mlztMlfio069IMqzdU
+
+GOOGLE_SHEET_NAME
+DATOS
+
+GOOGLE_SERVICE_ACCOUNT_EMAIL
+leads-distributor@leads-automatizacion-478718.iam.gserviceaccount.com
+
+GOOGLE_PRIVATE_KEY
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDenoPvGF6mlUCX
+Bl5YAmKm2Dyu2NGxFH0o+xhOl1b2+WCdzAsSS2ZJ1R1fLvnH41z1ER09Vzx9gx4m
+ttdGT3GmwqjgX4GWhDjLPV+8/Pch7NwRdYUY317HY1Cb1yIMIb3k7ipDCbq8lphX
+cYcc718oSLgT4aYzfF73V5OqLdXbD1nPatAJ46m3d8R7wGf9q2sxi4gJ4lTe82gr
+7pFdzR+xas+zOlWFnUdKomy5aNoddRx4WSQ2BDGHZkq63G7WwcyM5z9b3agA/8sV
+M9M/+ur+zSOBi5DedOAVAzJA0U7sCAriN8+UqiKueXu/eyfuXSRULmyj5mgFOBJv
+07w5+TS3AgMBAAECggEALe/w0qApO9+1jdSDGE8Zs0sQrpXQI2XSc+foeqMxD1Kj
+VLx7lmFXsKmY34DOiyhIEMvgyD0dntq1GJEHOBuBnMMzXOVoVLphC9NU06cxid8a
+BEJHXjwNj0BXrGjGvlEiIcDhmKbD0VGUCwtCsb5VWPc0gOnBxYMHB6wbLPU7WXHd
+c/bFNS2X1WDhJ+0iBE2xFpzrRjWQAhuV4cK4gl5NrvOc+PfFctphX4T2z/zkXUZB
+srryUfegT3lGKZIK8+GaW02kEhl6ADnC1uX2GYTHLIbX4GQ+eecAFCGL4IS2W/Q1
+NUA3vjDC1iVpdVRsu3hoHk/vYdFbRlXRwYiPB4uTzQKBgQDwzm/XgmWPto6ap3QT
+FhaxVtF5cW0ryNkzgdy372XmPN5ArJQa9d3+/uVqtdJ9XFcYfWbIuxXY3yoHUzPp
+LX2+aGrMQMWI8wrsyHUsILZEAuD7LFcVC5kF2nN9GlTLtCExJuGNd9pTb4Mnv/WI
+Yu+ectYm+ZoZ0zwjzdP0/8sDxQKBgQDsqlCFkXtgHIQkisJS0GWv3PEDUf5ojjFM
+735cSvD+/pwGpKdMxROGsOmvlY2D7UdXHJUlH9Jo6olCL9baVil7gy79i8FajDb4
+gV+6czcy6LB0QbRvI0YgOr0jtbf27zMlFV6Wa0k549GooS+8kPssr/cBjN3p0LN0
+9oQDO8JSSwKBgC+56oa/DFwAZaEXQTUrMpIxT9EO/wEnjIzd1x4Jb5vDQpV03uG9
+CyOn51ZP9QjtjUGIUR/FnJ3gFRdgkTBM2NgtH8WdrMjoyqiFTlvRm+4819RQRG4i
+X1C+rBcGafn5mH6CYz/DmlzhBBCTxhki6rTvs6wD2lv19rxt5e1v6Q+1AoGBALlO
+phvfjN31lhZSu9NCL8ziz6gM5IoThFC8WZGEcG0JCTw+Ymy/Bwn4rhF4pUT+XlS8
+IZ/e6c6SjgTQFogA3RxD3GBUtIHktgogqsb//eGTxs5QwCohUYBc3cn/OFtWchKA
+R/65ZK26T2idRRZ94t3bril9lijE7C8R8s3hVcc/AoGAamFhdfd3oNDCqJZibmUD
+TmWIMajhc3GhpapXtcgpFtAbzS8BykpB7S5E7GR6ez4UlUfNTWfJj12xe6OGLcZN
+oAEaqJN8uMEJ85MQgvM4EjfsrMEtDfEuAYcl75I5rCOzheEjpRI2wp34F+lclKkg
+2qy0/urrSBqyt06Ng8b78W4=
+-----END PRIVATE KEY-----
+
+# ========================================
+# SERVER
+# ========================================
+
+PORT
+3000
+
+NODE_ENV
+production
+
+# ========================================
+# API SECURITY
+# ========================================
+
+API_KEY
+0f75901005b036b1ed75ee359075fc017bae298b0c3d85169766fbd1b836468f
+
+
+# ========================================
+# INSTRUCCIONES PARA RAILWAY:
+# ========================================
+#
+# 1. Ve a Railway → Tu Proyecto → Variables
+# 2. Para CADA variable:
+#    - Nombre: La línea SIN espacios (ej: FACEBOOK_ACCESS_TOKEN)
+#    - Valor: La(s) línea(s) siguiente(s) hasta la siguiente variable
+#
+# 3. IMPORTANTE para GOOGLE_PRIVATE_KEY:
+#    - Copia TODO desde "-----BEGIN" hasta "-----END-----"
+#    - Railway acepta saltos de línea
+#    - NO agregues \n manualmente
+#    - Debe quedar en múltiples líneas
+#
+# 4. Después de agregar todas, Railway hará re-deploy automático
+#
+# ========================================
+# TOTAL: 11 variables
+# ========================================

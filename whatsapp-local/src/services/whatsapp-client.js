@@ -1,7 +1,7 @@
-// src/whatsapp-client.js
+// src/services/whatsapp-client.js
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const logger = require('./utils/logger');
+const logger = require('../utils/logger');
 
 class WhatsAppClient {
   constructor() {
@@ -19,7 +19,7 @@ class WhatsAppClient {
           dataPath: '.wwebjs_auth'
         }),
         puppeteer: {
-          headless: true, // Modo headless para PM2
+          headless: true,
           executablePath: '/Applications/Opera.app/Contents/MacOS/Opera',
           args: [
             '--no-sandbox',
@@ -57,12 +57,11 @@ class WhatsAppClient {
         await this.loadGroups();
       });
 
-      // Event: Disconnected - con reconexión automática
+      // Event: Disconnected
       this.client.on('disconnected', async (reason) => {
         logger.warn('⚠️ WhatsApp desconectado:', reason);
         this.isReady = false;
 
-        // Intentar reconexión automática después de 5 segundos
         logger.info('🔄 Intentando reconexión en 5 segundos...');
         setTimeout(async () => {
           try {
@@ -74,13 +73,6 @@ class WhatsAppClient {
         }, 5000);
       });
 
-      // Event: Message (para debugging)
-      this.client.on('message', async (msg) => {
-        // Solo para logs, no responder
-        logger.info(`Mensaje recibido de ${msg.from}: ${msg.body.substring(0, 50)}...`);
-      });
-
-      // Inicializar cliente
       await this.client.initialize();
 
     } catch (error) {
@@ -95,6 +87,9 @@ class WhatsAppClient {
       this.groups = chats.filter(chat => chat.isGroup);
 
       logger.info(`📱 Grupos de WhatsApp cargados: ${this.groups.length}`);
+      this.groups.forEach(g => {
+        logger.info(`  - ${g.name} (${g.id._serialized})`);
+      });
 
     } catch (error) {
       logger.error('Error cargando grupos:', error);
@@ -110,22 +105,15 @@ class WhatsAppClient {
       await this.client.sendMessage(groupId, message);
       logger.info(`✅ Mensaje enviado al grupo ${groupId}`);
 
-      // Esperar 2 segundos para asegurar que el mensaje se envíe completamente
+      // Esperar 2 segundos
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       return true;
 
     } catch (error) {
-      logger.error(`Error enviando mensaje al grupo ${groupId}:`, error.message || JSON.stringify(error));
+      logger.error(`Error enviando mensaje al grupo ${groupId}:`, error.message);
       throw error;
     }
-  }
-
-  async findGroupByName(name) {
-    const group = this.groups.find(g =>
-      g.name.toLowerCase().includes(name.toLowerCase())
-    );
-    return group ? group.id._serialized : null;
   }
 
   getStatus() {
@@ -137,7 +125,4 @@ class WhatsAppClient {
   }
 }
 
-// Singleton instance
-const whatsappClient = new WhatsAppClient();
-
-module.exports = whatsappClient;
+module.exports = new WhatsAppClient();
